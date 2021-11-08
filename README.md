@@ -10,7 +10,7 @@ If you want to try out the [example](example/) clone recursively, to get sub-mod
 git clone --recursive https://github.com/notnullgames/lovehandles.git
 ```
 
-As a sidenote, [loverest](https://github.com/notnullgames/loverest) is essentially a pre-wrapped verison of this, for easier use with JSON in/out APIs. 
+As a sidenote, [loverest](https://github.com/notnullgames/loverest) is essentially a pre-wrapped version of this, for easier use with JSON in/out APIs. 
 
 ## caveats
 
