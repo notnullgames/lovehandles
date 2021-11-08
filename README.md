@@ -47,6 +47,8 @@ function love.update(dt)
 end
 ```
 
+`google` (the async handle) will return `output`/`error`, once it's finished, so you can check for that.
+
 ## using a lib in a subdir
 
 You might want to keep your external library-code in a subdir. This is a general issue for love/lua apps, but the best way is to just modify your require-path. Let's imagine I want to keep stuff in `vendor/`, and I want to do git-submodules to track upstream changes, so things might not be in the top-dir. I have included a tiny function for that situation:
@@ -68,4 +70,4 @@ add_path('vendor/luajit-request')
 local lovehandles = require("lovehandles")
 ```
 
-This is actually pretty much how I did [example](example/).
+This is pretty much how I setup [example](example/).

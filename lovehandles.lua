@@ -7,35 +7,31 @@ function lovehandles(code)
   counter = counter + 1
 
   local realcode = [[
-local json = require 'dkjson'
 local bitser = require 'bitser'
 
-local a = {}
-for _,v in pairs(arg) do
-  table.insert(a, v)
-end
-
-print("THREAD: " .. json.encode(bitser.loads(a)))
-
-function payload(args)
+local args = bitser.loads(...)
+function payload()
   ]] .. code .. [[
 end
-
-love.thread.getChannel('lovehandles]]..counter..[['):push(bitser.dumps(payload(bitser.loads(a))))]]
+love.thread.getChannel('lovehandles]]..counter..[['):push(bitser.dumps(payload()))]]
   
   local thread = love.thread.newThread(realcode)
 
   -- this is the initial function
   return function(...)
-    thread:start(bitser.dumps(...))
+    thread:start(bitser.dumps({...}))
+    local error = nil
+    local data = nil
     -- this is the async callback
     return function()
-      local error = thread:getError()
-      local _data = love.thread.getChannel('lovehandles'..counter):pop()
-      local data = nil
-      if _data then
-        data = bitser.loads(_data)
-        print('DATA: ' .. json.encode(data))
+      if not error then
+        error = thread:getError()
+      end
+      if not data then
+        local _data = love.thread.getChannel('lovehandles'..counter):pop()
+        if _data then
+          data = bitser.loads(_data)
+        end
       end
       return data, error
     end
