@@ -23,9 +23,8 @@ local lovehandles = require("lovehandles")
 
 -- this sets up any other code, in that thread
 local req = lovehandles([[
-  local url, options = ...
   local r = require("luajit-request")
-  return r.send(url, options)
+  return r.send(args[1], args[2])
 ]])
 ```
 
@@ -43,7 +42,7 @@ end
 function love.update(dt)
   local output, error = google()
   if output and not error then
-    -- do something with text of the page
+    -- do something with text of the page in output.body, or whatever you like
     -- if you reset google by calling req again, it will also be reset above
   end
 end
