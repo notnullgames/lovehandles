@@ -1,24 +1,25 @@
 local bitser = require 'bitser'
-local json = require 'dkjson'
 
 local counter = 0
 
 function lovehandles(code)
-  counter = counter + 1
+  -- this is the initial function
+  return function(...)
+    counter = counter + 1
 
-  local realcode = [[
+    local realcode = [[
 local bitser = require 'bitser'
 
 local args = bitser.loads(...)
+
 function payload()
   ]] .. code .. [[
 end
-love.thread.getChannel('lovehandles]]..counter..[['):push(bitser.dumps(payload()))]]
+love.thread.getChannel('lovehandles]]..counter..[['):push(bitser.dumps(payload()))
+]]
+    
+    local thread = love.thread.newThread(realcode)
   
-  local thread = love.thread.newThread(realcode)
-
-  -- this is the initial function
-  return function(...)
     thread:start(bitser.dumps({...}))
     local error = nil
     local data = nil
