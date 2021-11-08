@@ -1,0 +1,6 @@
+[submodule "example/vendor/bitser"]
+	path = example/vendor/bitser
+	url = https://github.com/gvx/bitser.git
+[submodule "example/vendor/luajit-request"]
+	path = example/vendor/luajit-request
+	url = https://github.com/LPGhatguy/luajit-request.git
