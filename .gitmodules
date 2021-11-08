@@ -4,3 +4,6 @@
 [submodule "example/vendor/luajit-request"]
 	path = example/vendor/luajit-request
 	url = https://github.com/LPGhatguy/luajit-request.git
+[submodule "example/vendor/dkjson"]
+	path = example/vendor/dkjson
+	url = https://github.com/LuaDist/dkjson.git
