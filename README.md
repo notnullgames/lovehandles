@@ -10,6 +10,8 @@ If you want to try out the [example](example/) clone recursively, to get sub-mod
 git clone --recursive https://github.com/notnullgames/lovehandles.git
 ```
 
+As a sidenote, [loverest](https://github.com/notnullgames/loverest) is essentially a pre-wrapped verison of this, for easier use with JSON in/out APIs. 
+
 ## caveats
 
 There are probly a few, but this can only pass regular lua types (table, string, int, etc) as args. I may add support for registering classes, in the future, but that is not in there, now.
