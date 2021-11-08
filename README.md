@@ -51,7 +51,7 @@ end
 
 You might want to keep your external library-code in a subdir. This is a general issue for love/lua apps, but the best way is to just modify your require-path. Let's imagine I want to keep stuff in `vendor/`, and I want to do git-submodules to track upstream changes, so things might not be in the top-dir. I have included a tiny function for that situation:
 
-```
+```lua
 -- first one needs full path
 local add_path = require('vendor.lovehandles.add_path')
 
